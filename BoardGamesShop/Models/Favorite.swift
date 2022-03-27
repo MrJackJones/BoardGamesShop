@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Favorite {
+    var product: [Product]
+}

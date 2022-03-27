@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Сart {
+    var product: [Product]
+}
