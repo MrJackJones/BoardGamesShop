@@ -14,7 +14,6 @@
 		2C9FC66427EE32C800D10C74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FC66227EE32C800D10C74 /* LaunchScreen.storyboard */; };
 		2C9FC67027EE33A900D10C74 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FC66F27EE33A900D10C74 /* DataManager.swift */; };
 		2C9FC67327EE33E800D10C74 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FC67227EE33E800D10C74 /* Product.swift */; };
-		2C9FC67827EE347400D10C74 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FC67727EE347400D10C74 /* Favorite.swift */; };
 		2C9FC67A27EE34E400D10C74 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FC67927EE34E400D10C74 /* Order.swift */; };
 		2C9FC67C27EE34FF00D10C74 /* Сart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FC67B27EE34FF00D10C74 /* Сart.swift */; };
 		C35B2FF827F4EAF7008B415E /* BoardGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B2FF727F4EAF7008B415E /* BoardGamesTableViewController.swift */; };
@@ -36,7 +35,6 @@
 		2C9FC66527EE32C800D10C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C9FC66F27EE33A900D10C74 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2C9FC67227EE33E800D10C74 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		2C9FC67727EE347400D10C74 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		2C9FC67927EE34E400D10C74 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		2C9FC67B27EE34FF00D10C74 /* Сart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сart.swift"; sourceTree = "<group>"; };
 		C35B2FF727F4EAF7008B415E /* BoardGamesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGamesTableViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				2C9FC67227EE33E800D10C74 /* Product.swift */,
-				2C9FC67727EE347400D10C74 /* Favorite.swift */,
 				2C9FC67927EE34E400D10C74 /* Order.swift */,
 				2C9FC67B27EE34FF00D10C74 /* Сart.swift */,
 			);
@@ -221,7 +218,6 @@
 			files = (
 				2C9FC67C27EE34FF00D10C74 /* Сart.swift in Sources */,
 				C35B300027F64D82008B415E /* CartTableViewController.swift in Sources */,
-				2C9FC67827EE347400D10C74 /* Favorite.swift in Sources */,
 				C35B2FFA27F6487A008B415E /* TabBarController.swift in Sources */,
 				2C9FC67A27EE34E400D10C74 /* Order.swift in Sources */,
 				C35B2FFE27F64D51008B415E /* ReviewsTableViewController.swift in Sources */,
