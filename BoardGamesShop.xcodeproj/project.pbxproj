@@ -100,13 +100,13 @@
 		2C9FC66C27EE337900D10C74 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C35B300327F64DCB008B415E /* OrderInformationViewController.swift */,
+				C35B2FF727F4EAF7008B415E /* BoardGamesTableViewController.swift */,
+				C35B2FF927F6487A008B415E /* TabBarController.swift */,
+				C35B2FFB27F64CFE008B415E /* DetailOfProductTableViewController.swift */,
+				C35B2FFD27F64D51008B415E /* ReviewsTableViewController.swift */,
 				C35B300127F64DAE008B415E /* AddReviewViewController.swift */,
 				C35B2FFF27F64D82008B415E /* CartTableViewController.swift */,
-				C35B2FFB27F64CFE008B415E /* DetailOfProductTableViewController.swift */,
-				C35B2FF927F6487A008B415E /* TabBarController.swift */,
-				C35B2FF727F4EAF7008B415E /* BoardGamesTableViewController.swift */,
-				C35B2FFD27F64D51008B415E /* ReviewsTableViewController.swift */,
+				C35B300327F64DCB008B415E /* OrderInformationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
