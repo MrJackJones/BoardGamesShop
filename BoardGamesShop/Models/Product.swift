@@ -7,16 +7,20 @@
 
 import Foundation
 
+struct Category {
+    let categoryName: String
+    let games: [Product]
+}
+
 struct Product {
     let name: String
     let tagline: String
     let description: String
     let image: String
-    let price: Float
+    let price: Int
     let manufacturer: Manufacturer
     let equipmens: [Equipment]
     let feedbacks: [Feedback]
-    let category: Category
     let playerAge: Int
     let roundTime: Int
     let playerCountMin: Int
@@ -34,13 +38,13 @@ struct Feedback {
     let text: String
 }
 
-enum Category: String {
-    case party = "Вечериночные игры"
-    case qizzes = "Викторины"
-    case detective = "Детективные игры"
-    case children = "Детские игры"
-    case duel = "Дуэльные игры"
-}
+//enum Category: String {
+//    case party = "Вечериночные игры"
+//    case qizzes = "Викторины"
+//    case detective = "Детективные игры"
+//    case children = "Детские игры"
+//    case duel = "Дуэльные игры"
+//}
 
 enum Manufacturer: String {
     case hobbyWorld = "Hobby World"
