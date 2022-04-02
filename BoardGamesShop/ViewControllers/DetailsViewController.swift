@@ -15,7 +15,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var equipmensTV: UITableView!
     @IBOutlet var heightConstant: NSLayoutConstraint!
     
-    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var playerCountLabel: UILabel!
     @IBOutlet var gameTimeLabel: UILabel!
@@ -31,7 +30,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = product.name
+        tabBarController?.navigationItem.largeTitleDisplayMode = .never
+        tabBarController?.navigationItem.title = product.name
+        
         imageView.image = UIImage(named: product.image)
         descriptionLabel.text = product.description
         playerCountLabel.text = product.playerCount
@@ -76,12 +77,5 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-    
-    
-    
-    
-    
-    
-    
     
 }

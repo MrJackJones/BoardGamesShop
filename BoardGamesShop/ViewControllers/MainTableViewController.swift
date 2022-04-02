@@ -39,19 +39,22 @@ class MainTableViewController: UITableViewController {
         
         return cell
     }
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailsVC = segue.destination as? DetailsViewController else {return}
-        guard let product = sender as? Product else {return}
-        detailsVC.product = product
-        detailsVC.cart = cart
-    }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = categorys[indexPath.section].products[indexPath.row]
-        performSegue(withIdentifier: "showDetails", sender: product)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cartVC = segue.destination as? CartTableViewController {
+            cartVC.cart = cart
+        }else {
+            guard let tabBarController = segue.destination as? UITabBarController else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            for viewController in tabBarController.viewControllers! {
+               if let detailsVC = viewController as? DetailsViewController {
+                   detailsVC.product = categorys[indexPath.section].products[indexPath.row]
+                   detailsVC.cart = cart
+               } else if let feedbackVC = viewController as? FeedbackViewController {
+                   feedbackVC.product = categorys[indexPath.section].products[indexPath.row]
+               }
+           }
+        }
+
     }
-
-
 }

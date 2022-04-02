@@ -15,6 +15,7 @@ struct Product {
     let price: Int
     let manufacturer: Manufacturer
     let equipmens: [Equipment]
+    let feedbacks: [Feedback]
     let playerAge: Int
     let roundTime: Int
     let playerCountMin: Int
