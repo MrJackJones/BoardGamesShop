@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct Category {
-    let categoryName: String
-    let games: [Product]
-}
-
 struct Product {
     let name: String
     let tagline: String
@@ -20,12 +15,15 @@ struct Product {
     let price: Int
     let manufacturer: Manufacturer
     let equipmens: [Equipment]
-    let feedbacks: [Feedback]
     let playerAge: Int
     let roundTime: Int
     let playerCountMin: Int
     let playerCountMax: Int
     let releaseYear: Int
+    
+    var playerCount: String {
+        "\(playerCountMin) - \(playerCountMax)"
+    }
 }
 
 
@@ -38,13 +36,10 @@ struct Feedback {
     let text: String
 }
 
-//enum Category: String {
-//    case party = "Вечериночные игры"
-//    case qizzes = "Викторины"
-//    case detective = "Детективные игры"
-//    case children = "Детские игры"
-//    case duel = "Дуэльные игры"
-//}
+struct Category {
+    let name: String
+    let products: [Product]
+}
 
 enum Manufacturer: String {
     case hobbyWorld = "Hobby World"
