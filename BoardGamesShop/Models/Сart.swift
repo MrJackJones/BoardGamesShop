@@ -6,7 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 struct Сart {
     var product: [Product]
+    
+    init() {
+        product = []
+    }
 }
