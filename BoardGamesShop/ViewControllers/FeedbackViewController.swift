@@ -19,7 +19,7 @@ class FeedbackViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getTitle()
+//        getTitle()
         let addButton = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -34,10 +34,10 @@ class FeedbackViewController: UITableViewController {
         performSegue(withIdentifier: "addFeed", sender: nil)
     }
     
-    private func getTitle() {
-        let title = product.feedbacks.count == 0 ? "Отзывов еще нет" : "Отзывы"
-        tabBarController?.navigationItem.title = title
-    }
+//    private func getTitle() {
+//        let title = product.feedbacks.count == 0 ? "Отзывов еще нет" : "Отзывы"
+//        tabBarController?.navigationItem.title = title
+//    }
 
     // MARK: - Table view data source
 
@@ -70,10 +70,10 @@ class FeedbackViewController: UITableViewController {
         addFeedbackVC.feedback = product.feedbacks
     }
     
-    @IBAction func unwind(for segue: UIStoryboardSegue) {
-        guard let feedbackVC = segue.source as? AddFeedbackViewController else { return }
-        product.feedbacks = feedbackVC.feedback
-        tableView.reloadData()
-        getTitle()
-    }
+//    @IBAction func unwind(for segue: UIStoryboardSegue) {
+//        guard let feedbackVC = segue.source as? AddFeedbackViewController else { return }
+//        product.feedbacks = feedbackVC.feedback
+//        tableView.reloadData()
+//        getTitle()
+//    }
 }
