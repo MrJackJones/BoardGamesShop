@@ -7,20 +7,25 @@
 
 import UIKit
 
+protocol MainTableViewControllerDelegate {
+    func updateFeedback(_ product: Product)
+    func updateCart(_ cartWhithProduct: Сart)
+}
+
 class MainTableViewController: UITableViewController {
-    let categorys = DataManager.shared
-    let cart = Сart()
+    var sharedData = DataManager.shared
+    var cart = Сart()
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        categorys.count
+        sharedData.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        categorys[section].name
+        sharedData[section].name.rawValue
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categorys[section].products.count
+        sharedData[section].products.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -30,7 +35,7 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath)
-        let product = categorys[indexPath.section].products[indexPath.row]
+        let product = sharedData[indexPath.section].products[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
         content.image = UIImage(named: product.image)
@@ -48,13 +53,27 @@ class MainTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             for viewController in tabBarController.viewControllers! {
                if let detailsVC = viewController as? DetailsViewController {
-                   detailsVC.product = categorys[indexPath.section].products[indexPath.row]
+                   detailsVC.product = sharedData[indexPath.section].products[indexPath.row]
                    detailsVC.cart = cart
+                   detailsVC.delegate = self
                } else if let feedbackVC = viewController as? FeedbackViewController {
-                   feedbackVC.product = categorys[indexPath.section].products[indexPath.row]
+                   feedbackVC.product = sharedData[indexPath.section].products[indexPath.row]
+                   feedbackVC.delegate = self
                }
            }
         }
 
+    }
+}
+
+extension MainTableViewController: MainTableViewControllerDelegate {
+    func updateFeedback(_ product: Product) {
+        guard let indexOfCategory = sharedData.firstIndex(where: {$0.name == product.category}) else {return}
+        guard let indexOfProduct = sharedData[indexOfCategory].products.firstIndex(where: {$0 == product }) else {return}
+        sharedData[indexOfCategory].products[indexOfProduct].feedbacks = product.feedbacks
+    }
+    
+    func updateCart(_ cartWhithProduct: Сart) {
+        cart = cartWhithProduct
     }
 }
