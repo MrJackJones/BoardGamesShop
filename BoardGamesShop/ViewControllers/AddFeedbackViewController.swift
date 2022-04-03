@@ -7,17 +7,27 @@
 
 import UIKit
 
-class AddFeedbackViewController: UIViewController, UITextFieldDelegate {
+class AddFeedbackViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var feedbackTextField: UITextField!
+    @IBOutlet var feedbackTextView: UITextView!
+    
     
     var feedback: [Feedback]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
-        feedbackTextField.delegate = self
+        feedbackTextView.delegate = self
+//        feedbackTextView.delegate = self
+        
+        feedbackTextView.layer.cornerRadius = 5
+        feedbackTextView.layer.borderColor = UIColor
+            .gray.withAlphaComponent(0.3).cgColor
+        feedbackTextView.layer.borderWidth = 0.5
+        feedbackTextView.clipsToBounds = true
+        feedbackTextView.text = "Напишите свой отзыв"
+        feedbackTextView.textColor = UIColor.lightGray
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -26,6 +36,20 @@ class AddFeedbackViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         checkAndGo()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if feedbackTextView.textColor == UIColor.lightGray {
+            feedbackTextView.text = nil
+            feedbackTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if feedbackTextView.text.isEmpty {
+            feedbackTextView.text = "Напишите свой отзыв"
+            feedbackTextView.textColor = UIColor.lightGray
+        }
     }
 }
 
@@ -44,12 +68,12 @@ extension AddFeedbackViewController {
     }
     
     private func checkAndGo() {
-        if nameTextField.text == "" || feedbackTextField.text == "" {
+        if nameTextField.text == "" || feedbackTextView.text == "" {
             showAlertMessage()
         } else {
             feedback.append(Feedback(
                 authorName: nameTextField.text ?? "",
-                text: feedbackTextField.text ?? "")
+                text: feedbackTextView.text ?? "")
             )
             performSegue(withIdentifier: "returnToFeedbacks", sender: nil)
         }
@@ -63,11 +87,7 @@ extension AddFeedbackViewController {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == nameTextField {
-            feedbackTextField.becomeFirstResponder()
-        } else {
-            checkAndGo()
-        }
+        feedbackTextView.becomeFirstResponder()
         return true
     }
 }

@@ -10,11 +10,10 @@ import UIKit
 class FeedbackViewController: UITableViewController {
     
     var product: Product!
-    //Для приема экземпляра модели Product
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 55
+        tableView.rowHeight = 80
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,8 +25,6 @@ class FeedbackViewController: UITableViewController {
             action: #selector(addButtonPressed)
         )
         tabBarController?.navigationItem.rightBarButtonItems = [addButton]
-        // нужно добавить в методы viewWillAppear остальных вью внутри таббар контроллера строку:
-        // tabBarController?.navigationItem.rightBarButtonItems = []
     }
     
     @objc private func addButtonPressed() {
@@ -60,6 +57,10 @@ class FeedbackViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        product.feedbacks.count == 0 ? "Ваш отзыв будет первым!" : "Отзывы"
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -70,10 +71,9 @@ class FeedbackViewController: UITableViewController {
         addFeedbackVC.feedback = product.feedbacks
     }
     
-//    @IBAction func unwind(for segue: UIStoryboardSegue) {
-//        guard let feedbackVC = segue.source as? AddFeedbackViewController else { return }
-//        product.feedbacks = feedbackVC.feedback
-//        tableView.reloadData()
-//        getTitle()
-//    }
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let feedbackVC = segue.source as? AddFeedbackViewController else { return }
+        product.feedbacks = feedbackVC.feedback
+        tableView.reloadData()
+    }
 }

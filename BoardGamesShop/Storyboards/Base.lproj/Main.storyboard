@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RKb-VQ-AP1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RKb-VQ-AP1">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -57,12 +57,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedback" id="nto-Gs-ubm">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbacks" textLabel="AM5-ga-SNw" detailTextLabel="Dws-d0-WOv" rowHeight="80" style="IBUITableViewCellStyleSubtitle" id="nto-Gs-ubm">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nto-Gs-ubm" id="WTc-RU-cHs">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AM5-ga-SNw">
+                                            <rect key="frame" x="20" y="23" width="25" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="Dws-d0-WOv">
+                                            <rect key="frame" x="19.999999999999996" y="39.333333333333336" width="49.666666666666664" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -77,7 +93,7 @@
                         <barButtonItem key="backBarButtonItem" title="Отмена" id="2bB-qE-qFt"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4jD-a6-h3V">
                             <connections>
-                                <segue destination="Fwf-fA-QEw" kind="show" identifier="addFeed" id="EEr-YF-Dgb"/>
+                                <segue destination="Fwf-fA-QEw" kind="showDetail" identifier="addFeed" id="EEr-YF-Dgb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -92,46 +108,67 @@
             <objects>
                 <viewController id="Fwf-fA-QEw" customClass="AddFeedbackViewController" customModule="BoardGamesShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l77-wR-yUv">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="M7Q-va-GUt">
-                                <rect key="frame" x="20" y="108" width="388" height="88"/>
+                                <rect key="frame" x="20" y="144" width="388" height="182"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSQ-hq-DLk">
                                         <rect key="frame" x="0.0" y="0.0" width="388" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Отзыв" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8xr-wu-12C">
-                                        <rect key="frame" x="0.0" y="54" width="388" height="34"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iHM-aM-dd6">
+                                        <rect key="frame" x="0.0" y="54" width="388" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="vVP-Jz-eg6"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAO-FH-B70">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Напишите отзыв" id="Eb4-wJ-KOx">
+                                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="iob-3e-GlM">
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="Fwf-fA-QEw" id="7Nf-jI-vfa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Готово" id="C3b-5c-StW">
+                                            <connections>
+                                                <action selector="doneButtonPressed:" destination="Fwf-fA-QEw" id="fQS-B2-ZIS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u18-0L-e2Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u18-0L-e2Y" firstAttribute="trailing" secondItem="M7Q-va-GUt" secondAttribute="trailing" constant="20" id="Lcr-uu-cJH"/>
                             <constraint firstItem="M7Q-va-GUt" firstAttribute="leading" secondItem="u18-0L-e2Y" secondAttribute="leading" constant="20" id="Muz-QD-IzB"/>
-                            <constraint firstItem="M7Q-va-GUt" firstAttribute="top" secondItem="u18-0L-e2Y" secondAttribute="top" constant="20" id="mK8-Db-lXz"/>
+                            <constraint firstItem="M7Q-va-GUt" firstAttribute="top" secondItem="u18-0L-e2Y" secondAttribute="top" constant="100" id="j3Y-4I-dCo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Добавить отзыв" largeTitleDisplayMode="never" id="Frt-aJ-lcM">
-                        <barButtonItem key="rightBarButtonItem" title="Добавить" style="done" id="YOg-qE-Y9p">
-                            <connections>
-                                <action selector="doneButtonPressed:" destination="Fwf-fA-QEw" id="7it-Gp-yoY"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Добавить" style="done" id="YOg-qE-Y9p"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="feedbackTextField" destination="8xr-wu-12C" id="eY5-B5-eEy"/>
+                        <outlet property="feedbackTextView" destination="iHM-aM-dd6" id="tOo-1c-AgL"/>
                         <outlet property="nameTextField" destination="PSQ-hq-DLk" id="Z8z-Dn-NPP"/>
+                        <segue destination="cfR-df-VAW" kind="unwind" identifier="returnToFeedbacks" unwindAction="unwindFor:" id="cGo-4m-53u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4f-Ap-aI1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="cfR-df-VAW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1406.0747663551401" y="1262.8509719222463"/>
         </scene>
@@ -516,6 +553,9 @@
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="text.bubble.fill" catalog="system" width="128" height="110"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
