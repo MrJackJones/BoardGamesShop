@@ -63,4 +63,5 @@ enum Manufacturer: String {
     case magellan = "Magellan"
     case gaga = "GaGa Games"
     case spinMaster = "Spin Master"
+    case educa = "Educa"
 }
