@@ -13,12 +13,21 @@ protocol MainTableViewControllerDelegate {
 }
 
 class MainTableViewController: UITableViewController {
+    
+    @IBOutlet var cartButton: UIBarButtonItem!
+    
+    
     var sharedData = DataManager.shared
     var cart = Сart()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
+        cartButton.isEnabled = cart.product.isEmpty ? false : true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cartButton.isEnabled = cart.product.isEmpty ? false : true
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,7 +55,7 @@ class MainTableViewController: UITableViewController {
         content.image = UIImage(named: product.image)
         content.text = product.name
         cell.contentConfiguration = content
-        
+        cell.selectionStyle = .none
         return cell
     }
     

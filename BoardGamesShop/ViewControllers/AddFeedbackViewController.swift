@@ -19,7 +19,6 @@ class AddFeedbackViewController: UIViewController, UITextFieldDelegate, UITextVi
         super.viewDidLoad()
         nameTextField.delegate = self
         feedbackTextView.delegate = self
-//        feedbackTextView.delegate = self
         
         feedbackTextView.layer.cornerRadius = 5
         feedbackTextView.layer.borderColor = UIColor
