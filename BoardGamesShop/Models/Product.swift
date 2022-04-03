@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Product {
+struct Product: Equatable {
+    let id: Int
     let name: String
     let tagline: String
     let description: String
@@ -16,6 +17,7 @@ struct Product {
     let manufacturer: Manufacturer
     let equipmens: [Equipment]
     var feedbacks: [Feedback]
+    let category: Category
     let playerAge: Int
     let roundTime: Int
     let playerCountMin: Int
@@ -24,6 +26,10 @@ struct Product {
     
     var playerCount: String {
         "\(playerCountMin) - \(playerCountMax)"
+    }
+    
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
@@ -37,9 +43,17 @@ struct Feedback {
     let text: String
 }
 
-struct Category {
-    let name: String
-    let products: [Product]
+struct DataBase {
+    var name: Category
+    var products: [Product]
+}
+
+enum Category: String {
+    case party = "Вечериночные игры"
+    case qizzes = "Викторины"
+    case detective = "Детективные игры"
+    case children = "Детские игры"
+    case duel = "Дуэльные игры"
 }
 
 enum Manufacturer: String {
