@@ -31,6 +31,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tabBarController?.navigationItem.largeTitleDisplayMode = .never
         tabBarController?.navigationItem.title = product.name
         
