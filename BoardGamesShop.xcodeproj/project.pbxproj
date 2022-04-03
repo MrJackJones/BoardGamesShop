@@ -21,7 +21,6 @@
 		44E8980C27F6110B004A5084 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E8980B27F6110B004A5084 /* FeedbackViewController.swift */; };
 		44E8980E27F61139004A5084 /* AddFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E8980D27F61139004A5084 /* AddFeedbackViewController.swift */; };
 		C35B300027F64D82008B415E /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B2FFF27F64D82008B415E /* CartTableViewController.swift */; };
-		C35B300427F64DCB008B415E /* OrderInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B300327F64DCB008B415E /* OrderInformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		44E8980B27F6110B004A5084 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		44E8980D27F61139004A5084 /* AddFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedbackViewController.swift; sourceTree = "<group>"; };
 		C35B2FFF27F64D82008B415E /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartTableViewController.swift; path = BoardGamesShop/Storyboards/CartTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		C35B300327F64DCB008B415E /* OrderInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderInformationViewController.swift; path = BoardGamesShop/Storyboards/OrderInformationViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +99,6 @@
 				44E8980D27F61139004A5084 /* AddFeedbackViewController.swift */,
 				44E8980B27F6110B004A5084 /* FeedbackViewController.swift */,
 				C35B2FFF27F64D82008B415E /* CartTableViewController.swift */,
-				C35B300327F64DCB008B415E /* OrderInformationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -222,7 +219,6 @@
 				2C9FC67327EE33E800D10C74 /* Product.swift in Sources */,
 				2C9FC65827EE32C600D10C74 /* AppDelegate.swift in Sources */,
 				44E8980C27F6110B004A5084 /* FeedbackViewController.swift in Sources */,
-				C35B300427F64DCB008B415E /* OrderInformationViewController.swift in Sources */,
 				2C9FC65A27EE32C600D10C74 /* SceneDelegate.swift in Sources */,
 				2CA56B1E27F5BCDE00942605 /* DetailsViewController.swift in Sources */,
 			);

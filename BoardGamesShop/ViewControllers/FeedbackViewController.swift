@@ -31,8 +31,6 @@ class FeedbackViewController: UITableViewController {
         performSegue(withIdentifier: "addFeed", sender: nil)
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -60,7 +58,6 @@ class FeedbackViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let addFeedbackVC = segue.destination as? AddFeedbackViewController else { return }
         addFeedbackVC.feedback = product.feedbacks
