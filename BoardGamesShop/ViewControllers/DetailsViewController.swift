@@ -54,6 +54,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         heightConstant.constant = CGFloat(product.equipmens.count*50)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationItem.rightBarButtonItems = []
+    }
+    
     @IBAction func addToCartAction() {
         cart.product.append(product)
     }
