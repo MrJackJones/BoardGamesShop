@@ -23,7 +23,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var manufacturerLabel: UILabel!
     
     var product: Product!
-    var cart: Сart!
+    var cart: [Product]!
     var delegate: MainTableViewControllerDelegate!
     
     let cellReuseIdentifier = "productEquipmensCell"
@@ -62,7 +62,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func addToCartAction() {
-        cart.product.append(product)
+        cart.append(product)
         delegate.updateCart(cart)
     }
     

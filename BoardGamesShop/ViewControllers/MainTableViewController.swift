@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainTableViewControllerDelegate {
     func updateFeedback(_ product: Product)
-    func updateCart(_ cartWhithProduct: Сart)
+    func updateCart(_ cartWhithProduct: [Product])
 }
 
 class MainTableViewController: UITableViewController, UISearchBarDelegate {
@@ -20,18 +20,18 @@ class MainTableViewController: UITableViewController, UISearchBarDelegate {
     
     var sharedData = DataManager.shared
     var filteredData: [DataBase]!
-    var cart = Сart()
+    var cart: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         tableView.separatorStyle = .none
-        cartButton.isEnabled = cart.product.isEmpty ? false : true
+        cartButton.isEnabled = cart.isEmpty ? false : true
         filteredData = sharedData
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        cartButton.isEnabled = cart.product.isEmpty ? false : true
+        cartButton.isEnabled = cart.isEmpty ? false : true
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,7 +84,7 @@ class MainTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {
-        cart = Сart()
+        cart = []
     }
     
     private func getProductAfterSearch(_ indexPath: IndexPath) -> Product {
@@ -104,7 +104,7 @@ extension MainTableViewController: MainTableViewControllerDelegate {
         sharedData[indexOfCategory].products[indexOfProduct].feedbacks = product.feedbacks
     }
     
-    func updateCart(_ cartWhithProduct: Сart) {
+    func updateCart(_ cartWhithProduct: [Product]) {
         cart = cartWhithProduct
     }
 }

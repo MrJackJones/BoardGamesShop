@@ -9,7 +9,7 @@ import UIKit
 
 class CartTableViewController: UITableViewController {
     
-    var cart: Сart!
+    var cart: [Product]!
     var delegate: MainTableViewControllerDelegate!
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class CartTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return cart.product.count
+            return cart.count
         default:
             return 1
         }
@@ -56,7 +56,7 @@ class CartTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if editingStyle == .delete {
-                cart.product.remove(at: indexPath.row)
+                cart.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 delegate.updateCart(cart)
             }
@@ -79,7 +79,7 @@ class CartTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath)
-            let product = cart.product[indexPath.row]
+            let product = cart[indexPath.row]
             
             var content = cell.defaultContentConfiguration()
             content.image = UIImage(named: product.image)
