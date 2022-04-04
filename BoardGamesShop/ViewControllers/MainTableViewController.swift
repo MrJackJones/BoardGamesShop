@@ -12,18 +12,22 @@ protocol MainTableViewControllerDelegate {
     func updateCart(_ cartWhithProduct: Сart)
 }
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet var cartButton: UIBarButtonItem!
+    @IBOutlet var searchBar: UISearchBar!
     
     
     var sharedData = DataManager.shared
+    var filteredData: [DataBase]!
     var cart = Сart()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         tableView.separatorStyle = .none
         cartButton.isEnabled = cart.product.isEmpty ? false : true
+        filteredData = sharedData
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,15 +35,15 @@ class MainTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        sharedData.count
+        filteredData.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sharedData[section].name.rawValue
+        filteredData[section].name.rawValue
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sharedData[section].products.count
+        filteredData[section].products.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -49,7 +53,7 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath)
-        let product = sharedData[indexPath.section].products[indexPath.row]
+        let product = filteredData[indexPath.section].products[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
         content.image = UIImage(named: product.image)
@@ -68,11 +72,11 @@ class MainTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             for viewController in tabBarController.viewControllers! {
                 if let detailsVC = viewController as? DetailsViewController {
-                    detailsVC.product = sharedData[indexPath.section].products[indexPath.row]
+                    detailsVC.product = getProductAfterSearch(indexPath)
                     detailsVC.cart = cart
                     detailsVC.delegate = self
                 } else if let feedbackVC = viewController as? FeedbackViewController {
-                    feedbackVC.product = sharedData[indexPath.section].products[indexPath.row]
+                    feedbackVC.product = getProductAfterSearch(indexPath)
                     feedbackVC.delegate = self
                 }
             }
@@ -81,6 +85,14 @@ class MainTableViewController: UITableViewController {
     
     @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {
         cart = Сart()
+    }
+    
+    private func getProductAfterSearch(_ indexPath: IndexPath) -> Product {
+        let nameOfCategoty = filteredData[indexPath.section].name
+        let productOfCategoty = filteredData[indexPath.section].products[indexPath.row]
+        guard let indexOfCategory = sharedData.firstIndex(where: {$0.name == nameOfCategoty}) else { return sharedData[0].products[0] }
+        guard let indexOfProduct = sharedData[indexOfCategory].products.firstIndex(where: {$0 == productOfCategoty  }) else { return  sharedData[0].products[0] }
+        return sharedData[indexOfCategory].products[indexOfProduct]
     }
     
 }
@@ -96,3 +108,31 @@ extension MainTableViewController: MainTableViewControllerDelegate {
         cart = cartWhithProduct
     }
 }
+// MARK: - Search Bar Config
+extension MainTableViewController {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredData = []
+        
+        if searchText == "" {
+            filteredData = sharedData
+        } else {
+            for data in sharedData {
+                var productsArray: [Product] = []
+                for product in data.products {
+                    if product.name.lowercased().contains(searchText.lowercased()) {
+                        productsArray.append(product)
+                    }
+                }
+                if !productsArray.isEmpty {
+                    filteredData.append(DataBase(name: data.name, products: productsArray))
+                }
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+}
+
